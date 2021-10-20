@@ -6,10 +6,26 @@ services:
     container_name: portainer
     restart: always
     ports:
-      - 8999:9000
-      - 8000:8000
+      - "8000:8000"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainer_data:/data"
+    networks:
+      - v_hosts
+  home_site:
+    image: "ghcr.io/stuchlyf/home_site"
+    container_name: home_site
+    restart: always
+    volumes:
+      - "./home_site/conf.d:/etc/lighttpd"
+    ports:
+      - "3000:80"
+    networks:
+      - v_hosts
+    tty: true
+
+networks:
+  v_hosts:
+
 volumes:
   portainer_data:
