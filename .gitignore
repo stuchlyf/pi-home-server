@@ -517,6 +517,10 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+# pihole
+**/**/etc-dnsmasq.d
+**/**/etc-pihole
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
